@@ -26,5 +26,16 @@ in by applying the gcd helper functions to each argument left to right. The same
 is one function to calculate the lcm of two values and another to apply it to the arguments from left to right. 
 
 # How it went?
+The first homework went pretty smoothly. The logic and design of the overall project was simple and didn't too long to
+come up with. The road bumps came in during the implementation of the code. The usual problems such as syntax and
+features specific to Rust took a little while to adjust too. However the biggest challenge was the use of references and
+satisfying the borrow checker. 
 
 # Testing
+The testing for this program consisted of mainly unit tests which were created using the features already built into
+Rust. Since the program was broken up into many different helper functions, essentially each helper function had a unit
+test to go along with it. Specifically each unit test was given a vector of floats to check if its calculations were
+correct. In addition, the unit tests checked the edge cases when there are only 1 or no arguments given. The details
+of each test can be found in the comments of the source code.
+Lastly manual tests were done using the example input given in the homework assignment description and other input to 
+check all other special cases.
