@@ -2,13 +2,12 @@ use std::env;
 use std::str::FromStr;
 
 fn main() {
-
     //Grab arguments off of command line and place in to a Vector
     let arguments: Vec<String> = env::args().skip(1).collect();
 
     //Exit successfully if there are no numeric arguments and only an operation argument
     if check_args(&arguments) == 1 {
-        return
+        return;
     }
 
     //The first item in the vector should be the operation, so grab it and place it in a variable
@@ -23,23 +22,21 @@ fn main() {
     //Match the first argument with what operation needs to be done
     //If it does not match any operation panic.
     let result = match operation.as_ref() {
-        "sum"     => addition(values),
+        "sum" => addition(values),
         "product" => multiplication(values),
-        "gcd"     => gcd_multiple(values),
-        "lcm"     => lcm_multiple(values),
-        _         => panic!("{} not a valid operation", operation),
-
+        "gcd" => gcd_multiple(values),
+        "lcm" => lcm_multiple(values),
+        _ => panic!("{} not a valid operation", operation),
     };
 
     //Print out result
     println!("{}", result)
-
 }
 
 //Function to check that there is atleast 1 argument passed in from the command line
 //if there are no arguments then it will panic, if there are only 1 return 1, else just
 //return
-fn check_args(args: &Vec<String>)-> i32{
+fn check_args(args: &Vec<String>) -> i32 {
     let mut ret = 0;
     if args.len() == 0 {
         panic!("Need to provide atleast one command line argument");
@@ -62,28 +59,26 @@ fn addition(values: Vec<f64>) -> f64 {
 
 //Function that multiplies together all values in the vector from left to right, returns
 //0 if vector is empty
-fn multiplication(values: Vec<f64>) -> f64{
+fn multiplication(values: Vec<f64>) -> f64 {
     let mut product = 1.0;
     if values.len() > 0 {
         for i in values {
             product = product * i;
         }
-    }
-    else {
+    } else {
         product = 0.0;
     }
     product
 }
 
 //Finds the gcd of just two numbers using euclidean algorithm
-fn gcd(mut n: f64, mut m: f64) -> f64{
-    assert!(n != 0.0 && m !=0.0);
+fn gcd(mut n: f64, mut m: f64) -> f64 {
+    assert!(n != 0.0 && m != 0.0);
     while n != m {
         if n > m {
             n = n - m;
-        }
-        else {
-            m = m -n
+        } else {
+            m = m - n
         }
     }
     n
@@ -95,14 +90,14 @@ fn gcd_multiple(values: Vec<f64>) -> f64 {
     let mut answer = values[0];
     for i in 1..values.len() {
         answer = gcd(answer, values[i]);
-    } 
+    }
     answer
 }
 
 //Find lcm using the formula that involves the gcd of the two numbers
-fn lcm(n:f64, m:f64) -> f64{
-    let gcd_answer = gcd(n,m);
-    let answer = (n*m)/gcd_answer;
+fn lcm(n: f64, m: f64) -> f64 {
+    let gcd_answer = gcd(n, m);
+    let answer = (n * m) / gcd_answer;
     answer
 }
 
@@ -175,4 +170,3 @@ fn test_lcm() {
     values = vec![2.0];
     assert_eq!(lcm_multiple(values), 2.0);
 }
-
