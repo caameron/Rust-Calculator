@@ -2,7 +2,7 @@ use std::env;
 use std::str::FromStr;
 
 fn main() {
-    //Grab arguments off of command line and place in to a Vector
+    //Grab arguments off of command line and place in to a Vector dsadas 
     let arguments: Vec<String> = env::args().skip(1).collect();
 
     //Exit successfully if there are no numeric arguments and only an operation argument
